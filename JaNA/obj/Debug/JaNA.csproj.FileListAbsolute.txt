@@ -1,0 +1,15 @@
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\WebDriver.dll
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\WebDriver.xml
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.csprojAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.Form1.resources
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.Properties.Resources.resources
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.csproj.GenerateResource.cache
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.csproj.CoreCompileInputs.cache
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\JaNA.csproj.CopyComplete
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\Xceed.Document.NET.dll
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\Xceed.Words.NET.dll
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\YanaShla.exe.config
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\YanaShla.exe
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\bin\Debug\YanaShla.pdb
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\YanaShla.exe
+C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\JaNA\obj\Debug\YanaShla.pdb
