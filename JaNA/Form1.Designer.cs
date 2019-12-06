@@ -32,23 +32,22 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBoxAsozd = new System.Windows.Forms.CheckBox();
-            this.checkBoxConsultant = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBoxConsultant = new System.Windows.Forms.CheckBox();
+            this.checkBoxAsozd = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -90,57 +89,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel4
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 2);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(661, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 425);
-            this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // checkBoxAsozd
-            // 
-            this.checkBoxAsozd.AutoSize = true;
-            this.checkBoxAsozd.Checked = true;
-            this.checkBoxAsozd.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAsozd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxAsozd.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxAsozd.Name = "checkBoxAsozd";
-            this.checkBoxAsozd.Size = new System.Drawing.Size(140, 20);
-            this.checkBoxAsozd.TabIndex = 0;
-            this.checkBoxAsozd.Text = "Asozd.duma.gov.ru";
-            this.checkBoxAsozd.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxConsultant
-            // 
-            this.checkBoxConsultant.AutoSize = true;
-            this.checkBoxConsultant.Checked = true;
-            this.checkBoxConsultant.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxConsultant.Location = new System.Drawing.Point(3, 29);
-            this.checkBoxConsultant.Name = "checkBoxConsultant";
-            this.checkBoxConsultant.Size = new System.Drawing.Size(140, 20);
-            this.checkBoxConsultant.TabIndex = 1;
-            this.checkBoxConsultant.Text = "Consultant.ru";
-            this.checkBoxConsultant.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 16);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
-            this.dateTimePicker1.TabIndex = 2;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.47103F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.52897F));
+            this.tableLayoutPanel4.Controls.Add(this.checkedListBox1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(828, 431);
+            this.tableLayoutPanel4.TabIndex = 6;
             // 
             // checkedListBox1
             // 
@@ -152,17 +115,21 @@
             this.checkedListBox1.Size = new System.Drawing.Size(652, 425);
             this.checkedListBox1.TabIndex = 5;
             // 
-            // checkBox1
+            // tableLayoutPanel2
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(3, 55);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 22);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "government.ru";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(661, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 425);
+            this.tableLayoutPanel2.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -191,6 +158,44 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(146, 80);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // checkBoxConsultant
+            // 
+            this.checkBoxConsultant.AutoSize = true;
+            this.checkBoxConsultant.Checked = true;
+            this.checkBoxConsultant.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxConsultant.Location = new System.Drawing.Point(3, 29);
+            this.checkBoxConsultant.Name = "checkBoxConsultant";
+            this.checkBoxConsultant.Size = new System.Drawing.Size(140, 20);
+            this.checkBoxConsultant.TabIndex = 1;
+            this.checkBoxConsultant.Text = "Consultant.ru";
+            this.checkBoxConsultant.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAsozd
+            // 
+            this.checkBoxAsozd.AutoSize = true;
+            this.checkBoxAsozd.Checked = true;
+            this.checkBoxAsozd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAsozd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxAsozd.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxAsozd.Name = "checkBoxAsozd";
+            this.checkBoxAsozd.Size = new System.Drawing.Size(140, 20);
+            this.checkBoxAsozd.TabIndex = 0;
+            this.checkBoxAsozd.Text = "Asozd.duma.gov.ru";
+            this.checkBoxAsozd.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(3, 55);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(140, 22);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "government.ru";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dateTimePicker1);
@@ -202,31 +207,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Начальная дата";
             // 
-            // tableLayoutPanel4
+            // dateTimePicker1
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 2);
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.47103F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.52897F));
-            this.tableLayoutPanel4.Controls.Add(this.checkedListBox1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(828, 431);
-            this.tableLayoutPanel4.TabIndex = 6;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(3, 162);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(3, 16);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
+            this.dateTimePicker1.TabIndex = 2;
             // 
             // Form1
             // 
@@ -239,12 +227,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YanaShla";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -264,7 +252,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         public System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button button3;
     }
 }
 
