@@ -76,10 +76,11 @@ namespace JaNA.Classes
             var list = doc.AddList(listType: ListItemType.Numbered, startNumber: 1);
 
             doc.AddListItem(list, "Number 1", 0, listType);
-            doc.AddListItem(list, "", 0, listType);
+            doc.AddListItem(list, "Number 2", 0, listType);
 
             doc.InsertList(list);
-            doc.InsertParagraph(); //just to get some space between.
+            Paragraph par = doc.InsertParagraph(); //just to get some space between.
+
             var secondList = doc.AddList(listType: ListItemType.Numbered, startNumber: 1);
 
             doc.AddListItem(secondList, "Number 1", 0, listType);
@@ -90,7 +91,9 @@ namespace JaNA.Classes
             List l = doc.Lists[0];
             
             Hyperlink hl = doc.AddHyperlink("some hyperlink", new Uri("https://stackoverflow.com"));
+            
             l.Items[1].AppendHyperlink(hl);
+            par.InsertHyperlink(hl);
             // Save to the output directory:
             doc.Save();
 

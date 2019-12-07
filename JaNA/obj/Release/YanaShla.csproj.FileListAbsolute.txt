@@ -1,0 +1,14 @@
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\YanaShla.exe.config
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\YanaShla.exe
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\YanaShla.pdb
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\WebDriver.dll
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\Xceed.Document.NET.dll
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\Xceed.Words.NET.dll
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\bin\Release\WebDriver.xml
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\YanaShla.csprojAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\JaNA.Form1.resources
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\JaNA.Properties.Resources.resources
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\YanaShla.csproj.GenerateResource.cache
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\YanaShla.csproj.CopyComplete
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\YanaShla.exe
+C:\Users\Denis\Documents\Visual Studio Projects\YanaShla\YanaShla\JaNA\obj\Release\YanaShla.pdb

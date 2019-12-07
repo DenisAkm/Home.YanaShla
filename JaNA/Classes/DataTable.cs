@@ -20,8 +20,7 @@ namespace JaNA.Classes
             idColumn.AutoIncrementStep = 1; // приращении при добавлении новой строки
 
             DataColumn contextColumn = new DataColumn("Context", Type.GetType("System.String"));
-            DataColumn linkColumn = new DataColumn("Link", Type.GetType("System.String"));
-            //DataColumn typeColumn = new DataColumn("TypeAndNumber", Type.GetType("System.String"));
+            DataColumn linkColumn = new DataColumn("Link", Type.GetType("System.String"));            
             DataColumn datum = new DataColumn("Datum", Type.GetType("System.DateTime"));
             DataColumn include = new DataColumn("Include", Type.GetType("System.Boolean"));
             include.DefaultValue = true;
