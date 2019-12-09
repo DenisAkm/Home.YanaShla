@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,7 +35,7 @@ namespace JaNA
             checkedListBox1.Items.Clear();
             checkedListBox1.Refresh();
             var timePeriod = DateTime.Now.Subtract(dateTimePicker1.Value);
-            ParsingLogic.RunParseTask(timePeriod.Days);
+            ParsingLogic.RunParseAsync(timePeriod.Days);
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -47,12 +48,6 @@ namespace JaNA
             }
             doc.CreateReportDocument(ParsingLogic.data);
             Close();
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            Document d = new Document();
-            d.CreateNumberdList();
-        }
+        }        
     }
 }
