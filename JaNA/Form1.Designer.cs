@@ -39,7 +39,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxConsultant = new System.Windows.Forms.CheckBox();
             this.checkBoxAsozd = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxGovernment = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
@@ -147,7 +147,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.checkBoxConsultant, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.checkBoxAsozd, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.checkBox1, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.checkBoxGovernment, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -161,8 +161,6 @@
             // checkBoxConsultant
             // 
             this.checkBoxConsultant.AutoSize = true;
-            this.checkBoxConsultant.Checked = true;
-            this.checkBoxConsultant.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxConsultant.Location = new System.Drawing.Point(3, 29);
             this.checkBoxConsultant.Name = "checkBoxConsultant";
@@ -174,8 +172,6 @@
             // checkBoxAsozd
             // 
             this.checkBoxAsozd.AutoSize = true;
-            this.checkBoxAsozd.Checked = true;
-            this.checkBoxAsozd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAsozd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxAsozd.Location = new System.Drawing.Point(3, 3);
             this.checkBoxAsozd.Name = "checkBoxAsozd";
@@ -184,17 +180,18 @@
             this.checkBoxAsozd.Text = "Asozd.duma.gov.ru";
             this.checkBoxAsozd.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBoxGovernment
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(3, 55);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 22);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "government.ru";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxGovernment.AutoSize = true;
+            this.checkBoxGovernment.Checked = true;
+            this.checkBoxGovernment.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGovernment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxGovernment.Location = new System.Drawing.Point(3, 55);
+            this.checkBoxGovernment.Name = "checkBoxGovernment";
+            this.checkBoxGovernment.Size = new System.Drawing.Size(140, 22);
+            this.checkBoxGovernment.TabIndex = 3;
+            this.checkBoxGovernment.Text = "government.ru";
+            this.checkBoxGovernment.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -246,12 +243,12 @@
         public System.Windows.Forms.CheckBox checkBoxAsozd;
         public System.Windows.Forms.CheckBox checkBoxConsultant;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         public System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckBox checkBoxGovernment;
     }
 }
 

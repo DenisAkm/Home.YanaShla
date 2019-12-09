@@ -23,7 +23,7 @@ namespace JaNA.Classes
             DataColumn linkColumn = new DataColumn("Link", Type.GetType("System.String"));            
             DataColumn datum = new DataColumn("Datum", Type.GetType("System.DateTime"));
             DataColumn include = new DataColumn("Include", Type.GetType("System.Boolean"));
-            include.DefaultValue = true;
+            include.DefaultValue = false;
 
             this.Columns.Add(idColumn);         //id
             this.Columns.Add(contextColumn);    //текст (наименование) закона
@@ -35,6 +35,25 @@ namespace JaNA.Classes
             // определяем первичный ключ таблицы books
             this.PrimaryKey = new DataColumn[] { this.Columns["Id"] };
         }
-        
+
+        public void Filter()
+        {
+            var originList = new List<string>()
+            {
+                "оборонн",
+                "бухгалтерск"
+            };
+
+            foreach (DataRow row in Rows)
+            {
+                foreach (string item in originList)
+                {
+                    if (row["Context"].ToString().Contains(item))
+                    {
+                        row["Include"] = true;
+                    }
+                }                
+            }
+        }
     }
 }
