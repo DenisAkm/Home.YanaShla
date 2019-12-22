@@ -42,3 +42,17 @@ C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\YanaShla\JaNA\obj\Debu
 C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\YanaShla\JaNA\obj\Debug\YanaShla.csproj.CopyComplete
 C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\YanaShla\JaNA\obj\Debug\YanaShla.exe
 C:\Users\Denis\Documents\Visual Studio 2019_projects\JaNA\YanaShla\JaNA\obj\Debug\YanaShla.pdb
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\YanaShla.exe.config
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\YanaShla.exe
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\YanaShla.pdb
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\WebDriver.dll
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\Xceed.Document.NET.dll
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\Xceed.Words.NET.dll
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\bin\Debug\WebDriver.xml
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\YanaShla.csprojAssemblyReference.cache
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\JaNA.Form1.resources
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\JaNA.Properties.Resources.resources
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\YanaShla.csproj.GenerateResource.cache
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\YanaShla.csproj.CopyComplete
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\YanaShla.exe
+C:\Home Directory\Programing\Projects\YanaShla\JaNA\obj\Debug\YanaShla.pdb

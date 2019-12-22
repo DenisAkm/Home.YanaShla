@@ -161,12 +161,14 @@
             // checkBoxConsultant
             // 
             this.checkBoxConsultant.AutoSize = true;
+            this.checkBoxConsultant.Checked = true;
+            this.checkBoxConsultant.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxConsultant.Location = new System.Drawing.Point(3, 29);
             this.checkBoxConsultant.Name = "checkBoxConsultant";
             this.checkBoxConsultant.Size = new System.Drawing.Size(140, 20);
             this.checkBoxConsultant.TabIndex = 1;
-            this.checkBoxConsultant.Text = "Consultant.ru";
+            this.checkBoxConsultant.Text = "consultant.ru";
             this.checkBoxConsultant.UseVisualStyleBackColor = true;
             // 
             // checkBoxAsozd
@@ -177,14 +179,12 @@
             this.checkBoxAsozd.Name = "checkBoxAsozd";
             this.checkBoxAsozd.Size = new System.Drawing.Size(140, 20);
             this.checkBoxAsozd.TabIndex = 0;
-            this.checkBoxAsozd.Text = "Asozd.duma.gov.ru";
+            this.checkBoxAsozd.Text = "asozd.duma.gov.ru";
             this.checkBoxAsozd.UseVisualStyleBackColor = true;
             // 
             // checkBoxGovernment
             // 
             this.checkBoxGovernment.AutoSize = true;
-            this.checkBoxGovernment.Checked = true;
-            this.checkBoxGovernment.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxGovernment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxGovernment.Location = new System.Drawing.Point(3, 55);
             this.checkBoxGovernment.Name = "checkBoxGovernment";

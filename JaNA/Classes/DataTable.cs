@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,11 +39,13 @@ namespace JaNA.Classes
 
         public void Filter()
         {
-            var originList = new List<string>()
+            string path = Path.Combine(Environment.CurrentDirectory, "filter.txt");
+            List<string> originList = new List<string>();
+            if (File.Exists(path))
             {
-                "оборонн",
-                "бухгалтерск"
-            };
+                originList = GetFilter(path);
+            }
+            
 
             foreach (DataRow row in Rows)
             {
@@ -54,6 +57,24 @@ namespace JaNA.Classes
                     }
                 }                
             }
+        }
+
+        private List<string> GetFilter(string path)
+        {
+            var answer = new List<string>();
+            try
+            {
+                StreamReader sr = new StreamReader(path);
+                while (!sr.EndOfStream)
+                {                    
+                    answer.Add(sr.ReadLine());
+                }
+                return answer;
+            }
+            catch (Exception)
+            {
+                return answer;                
+            }            
         }
     }
 }

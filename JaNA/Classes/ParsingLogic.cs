@@ -217,13 +217,14 @@ namespace JaNA.Classes
 
             //устанавливаем дату
             driver.FindElement(By.XPath(@".//*[@class='btn-calendar']")).Click();
-            DateTime finishTime = DateTime.Now;
+            DateTime finishTime = DateTime.Now;            
             DateTime startTime = finishTime.AddDays(-days);
             driver.FindElement(By.XPath(@".//*[@id='start_date']")).SendKeys(startTime.ToString("d"));
             driver.FindElement(By.XPath(@".//*[@id='end_date']")).SendKeys(finishTime.ToString("d"));
             driver.FindElement(By.XPath(@".//*[@id='interim']/button")).Click();
             //Считаем количество страниц 
-            int pages = driver.FindElements(By.XPath(@".//*[@class='pagination']/li")).Count;
+            int pages = driver.FindElements(By.XPath(@".//*[@class='pagination']/li")).Count; 
+
             if (pages == 0)
             {
                 pages = 1;

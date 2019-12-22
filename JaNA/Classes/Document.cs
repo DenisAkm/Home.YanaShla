@@ -202,7 +202,15 @@ namespace JaNA.Classes
             doc.Save();
 
             // Open in Word:
-            Process.Start("WINWORD.EXE", name);
+            try
+            {
+                Process.Start("WINWORD.EXE", name);
+            }
+            catch (Exception)
+            {
+                                
+            }
+            
         }
         string ModifyToText(object val)
         {
