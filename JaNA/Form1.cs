@@ -39,15 +39,26 @@ namespace JaNA
         }
 
         private void Button2_Click(object sender, EventArgs e)
-        {            
-            Document doc = new Document();
-
-            for (int i = 0; i < ParsingLogic.data.Rows.Count; i++)
+        {
+            if (ParsingLogic.data != null)
             {
-                ParsingLogic.data.Rows[i].SetField("Include", checkedListBox1.GetItemChecked(i));
+                Document doc = new Document();
+
+                for (int i = 0; i < ParsingLogic.data.Rows.Count; i++)
+                {
+                    ParsingLogic.data.Rows[i].SetField("Include", checkedListBox1.GetItemChecked(i));
+                }
+                doc.CreateReportDocument(ParsingLogic.data);
+                Close();
             }
-            doc.CreateReportDocument(ParsingLogic.data);
-            Close();
+            else
+            {
+                DialogResult result = MessageBox.Show("Выход без сохранения?", "Сообщение", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Close();
+                }
+            }
         }        
     }
 }

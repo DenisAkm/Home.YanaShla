@@ -69,9 +69,8 @@
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(3, 363);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 37);
+            this.button1.Size = new System.Drawing.Size(158, 34);
             this.button1.TabIndex = 0;
             this.button1.Text = "Поиск";
             this.button1.UseVisualStyleBackColor = true;
@@ -81,9 +80,8 @@
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Location = new System.Drawing.Point(3, 403);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 37);
+            this.button2.Size = new System.Drawing.Size(158, 34);
             this.button2.TabIndex = 3;
             this.button2.Text = "Сохранить и выйти";
             this.button2.UseVisualStyleBackColor = true;
@@ -108,6 +106,7 @@
             // checkedListBox1
             // 
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.HorizontalScrollbar = true;
             this.checkedListBox1.Location = new System.Drawing.Point(3, 3);
