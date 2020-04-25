@@ -55,24 +55,23 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(834, 467);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(274, 440);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 363);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
+            this.button1.Size = new System.Drawing.Size(158, 37);
             this.button1.TabIndex = 0;
             this.button1.Text = "Поиск";
             this.button1.UseVisualStyleBackColor = true;
@@ -80,10 +79,11 @@
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.Location = new System.Drawing.Point(420, 440);
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(3, 403);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 23);
+            this.button2.Size = new System.Drawing.Size(158, 37);
             this.button2.TabIndex = 3;
             this.button2.Text = "Сохранить и выйти";
             this.button2.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(828, 431);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(828, 446);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // checkedListBox1
@@ -112,31 +112,36 @@
             this.checkedListBox1.HorizontalScrollbar = true;
             this.checkedListBox1.Location = new System.Drawing.Point(3, 3);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(652, 425);
+            this.checkedListBox1.Size = new System.Drawing.Size(652, 440);
             this.checkedListBox1.TabIndex = 5;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.button2, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(661, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 425);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 440);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(152, 99);
+            this.groupBox1.Size = new System.Drawing.Size(158, 99);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сайты";
@@ -155,7 +160,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(146, 80);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(152, 80);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // checkBoxConsultant
@@ -166,7 +171,7 @@
             this.checkBoxConsultant.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBoxConsultant.Location = new System.Drawing.Point(3, 29);
             this.checkBoxConsultant.Name = "checkBoxConsultant";
-            this.checkBoxConsultant.Size = new System.Drawing.Size(140, 20);
+            this.checkBoxConsultant.Size = new System.Drawing.Size(146, 20);
             this.checkBoxConsultant.TabIndex = 1;
             this.checkBoxConsultant.Text = "consultant.ru";
             this.checkBoxConsultant.UseVisualStyleBackColor = true;
@@ -175,9 +180,10 @@
             // 
             this.checkBoxAsozd.AutoSize = true;
             this.checkBoxAsozd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxAsozd.Enabled = false;
             this.checkBoxAsozd.Location = new System.Drawing.Point(3, 3);
             this.checkBoxAsozd.Name = "checkBoxAsozd";
-            this.checkBoxAsozd.Size = new System.Drawing.Size(140, 20);
+            this.checkBoxAsozd.Size = new System.Drawing.Size(146, 20);
             this.checkBoxAsozd.TabIndex = 0;
             this.checkBoxAsozd.Text = "asozd.duma.gov.ru";
             this.checkBoxAsozd.UseVisualStyleBackColor = true;
@@ -186,9 +192,10 @@
             // 
             this.checkBoxGovernment.AutoSize = true;
             this.checkBoxGovernment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxGovernment.Enabled = false;
             this.checkBoxGovernment.Location = new System.Drawing.Point(3, 55);
             this.checkBoxGovernment.Name = "checkBoxGovernment";
-            this.checkBoxGovernment.Size = new System.Drawing.Size(140, 22);
+            this.checkBoxGovernment.Size = new System.Drawing.Size(146, 22);
             this.checkBoxGovernment.TabIndex = 3;
             this.checkBoxGovernment.Text = "government.ru";
             this.checkBoxGovernment.UseVisualStyleBackColor = true;

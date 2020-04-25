@@ -35,32 +35,31 @@ namespace JaNA.Classes
                 List<DataTableFactory> dataList = new List<DataTableFactory>();
                 List<Task> taskList = new List<Task>();
 
-                if (Form1.Application.checkBoxAsozd.Checked)
-                {                    
-                    Task task = new Task(() => dataList.Add(ParseAsozd(Days)));
-                    taskList.Add(task);
-                    task.Start();                    
-                }
+                // Сайт не работает.
+                //if (Form1.Application.checkBoxAsozd.Checked)
+                //{                    
+                //    Task task = new Task(() => dataList.Add(ParseAsozd(Days)));
+                //    taskList.Add(task);
+                //    task.Start();                    
+                //}
                 if (Form1.Application.checkBoxConsultant.Checked)
                 {                 
                     Task task = new Task(() => dataList.Add(ParseConsultant(Days)));                    
                     taskList.Add(task);
                     task.Start();
                 }
-                if (Form1.Application.checkBoxGovernment.Checked)
-                {
-                    Task task = new Task(() => dataList.Add(ParseGovernment(Days)));
-                    taskList.Add(task);
-                    task.Start();
-                }
+                // Сайт изменён.
+                //if (Form1.Application.checkBoxGovernment.Checked)
+                //{
+                //    Task task = new Task(() => dataList.Add(ParseGovernment(Days)));
+                //    taskList.Add(task);
+                //    task.Start();
+                //}
                 Task.WaitAll(taskList.ToArray());                
-                data = MergeTables(dataList);    
-                
+                data = MergeTables(dataList);
             });
             WriteToList();
-        }
-
-        
+        }        
 
         private static DataTableFactory MergeTables(List<DataTableFactory> datalist)
         {
@@ -74,7 +73,6 @@ namespace JaNA.Classes
             }
             return mertgedtable;
         }
-        
         private static void WriteToList()
         {
             for (int i = 0; i < ParsingLogic.data.Rows.Count; i++)
@@ -84,7 +82,6 @@ namespace JaNA.Classes
                 Form1.Application.checkedListBox1.Items.Add(context, include);
             }
         }
-
         private static void Searching(IWebDriver driver, ref DataTableFactory data, int days, string patch)
         {
             for (int i = 0; i < days / 2 + 1; i++)
@@ -111,7 +108,159 @@ namespace JaNA.Classes
                 }
             }
         }
+        private static bool CheckForTopicMatch(string hearlineTitle, List<string> topics)
+        {           
+            foreach (var item in topics)
+            {
+                if (hearlineTitle.Contains(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        public static DataTableFactory ParseConsultant(int days)
+        {
+            DataTableFactory data = new DataTableFactory("Consultant");
+            IWebDriver driver = GetNewDriver();
+            //Идём в роздел горячие документы
+            string urlPath = @"http://www.consultant.ru/law/hotdocs/";
+            driver.Url = urlPath;
+
+            //устанавливаем дату
+            driver.FindElement(By.XPath(@".//*[@class='btn-calendar']")).Click();
+            DateTime finishTime = DateTime.Now;            
+            DateTime startTime = finishTime.AddDays(-days);
+            driver.FindElement(By.XPath(@".//*[@id='start_date']")).SendKeys(startTime.ToString("d"));
+            driver.FindElement(By.XPath(@".//*[@id='end_date']")).SendKeys(finishTime.ToString("d"));
+            driver.FindElement(By.XPath(@".//*[@id='interim']/button")).Click();
+            //Считаем количество страниц 
+            int pages = driver.FindElements(By.XPath(@".//*[@class='pagination']/li")).Count; 
+
+            if (pages == 0)
+            {
+                pages = 1;
+            }
+            else
+            {
+                pages = pages / 2 - 1;
+            }
+            for (int i = 0; i < pages; i++)
+            {
+                //получаем список законов
+                var list = driver.FindElements(By.XPath(@".//*[@class='hditem']"));
+
+                //записываем всё найденное
+                for (int j = 0; j < list.Count; j++)
+                {
+                    var element = list[j].FindElement(By.XPath(@".//*[@class='link']/a"));
+                    string text = element.Text.Replace("\r", "");
+                    string link = element.GetAttribute("href");
+                    data.Rows.Add(new object[] { null, text, link });
+                }
+                if (i != (pages - 1) && pages > 1)
+                {
+                    var item = driver.FindElement(By.XPath($@".//*[@class='pagination']/li[{i + 3}]/a"));
+                    driver.Url = item.GetAttribute("href");
+                }
+            }
+            driver?.Quit();
+            data.Filter();
+            return data;
+        }
+
+
+        #region Черновик
+        public static DataTableFactory ParseAsozd(int days)
+        {
+            DataTableFactory data = new DataTableFactory("Asozd");
+            IWebDriver driver = GetNewDriver();
+            //Идём на главную
+            string urlPath = @"http://asozd.duma.gov.ru";
+            driver.Url = urlPath;
+            //С главной уходим на Перечень законопроектов, внесённых в Государственную Думу
+            driver.FindElement(By.XPath(@"/ html / body / div / div / div[2] / table / tbody / tr / td[2] / div / div / div / ul / li[1] / a")).Click();
+            //Перебираем по двум дням и 24 часам в Перечене законопроектов
+            Searching(driver, ref data, days, "Проект Федерального закона №");
+            //Идём на главную
+            driver.Url = urlPath;
+            //С главной уходим на Проекты постановлений
+            driver.FindElement(By.XPath(@"/ html / body / div / div / div[2] / table / tbody / tr / td[2] / div / div / div / ul / li[2] / a")).Click();
+            //Перебираем по двум дням и 24 часам в Перечене Проектов постановлений
+            Searching(driver, ref data, days, "Проект постановления №");
+            driver?.Quit();
+            data.Filter();
+            return data;
+        }
+        private static DataTableFactory ParseGovernment(int days)
+        {
+            DataTableFactory data = new DataTableFactory("Government");
+            IWebDriver driver = GetNewDriver();
+            //опеределяем даты для формирпования запроса
+            DateTime now = DateTime.Now;
+            DateTime start = now.AddDays(-days);
+            string site = "http://government.ru/docs/";
+            var topics = new List<string>() { "Оборонно-промышленный комплекс", "Государственный оборонный заказ", "Авиастроение", "Таможенно-тарифное регулирование",
+                "Государственная программа «Развитие авиационной промышленности на 2013–2025 годы»" };
+            //Идём в роздел горячие документы
+            string urlPath = $@"{site}?dt.since={start.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"))}&dt.till={now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"))}";
+            driver.Url = urlPath;
+            
+            //1 - Раскрываем список            
+            var footer = driver.FindElement(By.XPath(@".//*[@class='footer']"));
+            Actions act = new Actions(driver);
+            //Прокручиваем вниз
+            act.MoveToElement(footer);
+            act.Perform();
+            //Если есть кнопка "Показать ещё" нажимаем и снова прокручиваем
+            while (driver.FindElements(By.XPath(@".//*[@class='show-more']")).Count != 0)
+            {                
+                driver.FindElements(By.XPath(@".//*[@class='show-more']"))[0].Click();
+                act.MoveToElement(footer);
+                act.Perform();
+            }
+
+            //2 - Считываем документ
+            //var headlines = driver.FindElements(By.XPath(@".//*[@class='headline\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ']"));    //*[@id="docs"]/div/div[1]/div/div[3]/div[1]/div[1]
+            //если страниц больше одной, то цикл по страницам
+            var pages = driver.FindElements(By.XPath(@".//*[@class='news-block-num']")).Count;
+            if (pages == 0)
+            {
+                pages = 1;
+            }
+            for (int p = 1; p <= pages; p++)
+            {
+                var headlines = driver.FindElements(By.XPath($@".//*[@id='docs']/div/div[1]/div/div[3]/div[{p}]/div"));
+                for (int j = 0; j < headlines.Count; j++)
+                {
+                    string atr = headlines[j].GetAttribute("class");
+                    if (atr != "date-splitter" && atr != "date-splitter up")
+                    {
+                        var headline = headlines[j];
+                        //var item = driver.FindElements(By.XPath($@".//*[@class='{atr}']"));
+                        var hearlineTitle = headline.FindElements(By.XPath(@".//*[@class='headline_date']/a"));
+                        string topic;
+                        if (hearlineTitle.Count > 0)
+                        {
+                            topic = hearlineTitle[0].Text;
+                        }
+                        else
+                        {
+                            topic = "";
+                        }
+                        if (CheckForTopicMatch(topic, topics))//
+                        {
+                            var text = headline.FindElement(By.XPath(@".//*[@class='headline_lead']"))?.Text;
+                            string link = headline.FindElement(By.XPath(@"./a")).GetAttribute("href");
+                            data.Rows.Add(new object[] { null, text, link });
+                        }
+                    }                 
+                }
+            }
+            driver?.Quit();
+            return data;
+        }
         public static async Task<DataTableFactory> ParseAsozdAsync(int days)
         {
             DataTableFactory data = new DataTableFactory("Asozd");
@@ -186,161 +335,7 @@ namespace JaNA.Classes
             return data;
         }
 
-        public static DataTableFactory ParseAsozd(int days)
-        {
-            DataTableFactory data = new DataTableFactory("Asozd");
-            IWebDriver driver = GetNewDriver();
-            //Идём на главную
-            string urlPath = @"http://asozd.duma.gov.ru";
-            driver.Url = urlPath;
-            //С главной уходим на Перечень законопроектов, внесённых в Государственную Думу
-            driver.FindElement(By.XPath(@"/ html / body / div / div / div[2] / table / tbody / tr / td[2] / div / div / div / ul / li[1] / a")).Click();
-            //Перебираем по двум дням и 24 часам в Перечене законопроектов
-            Searching(driver, ref data, days, "Проект Федерального закона №");
-            //Идём на главную
-            driver.Url = urlPath;
-            //С главной уходим на Проекты постановлений
-            driver.FindElement(By.XPath(@"/ html / body / div / div / div[2] / table / tbody / tr / td[2] / div / div / div / ul / li[2] / a")).Click();
-            //Перебираем по двум дням и 24 часам в Перечене Проектов постановлений
-            Searching(driver, ref data, days, "Проект постановления №");
-            driver?.Quit();
-            data.Filter();
-            return data;
-        }
-        public static DataTableFactory ParseConsultant(int days)
-        {
-            DataTableFactory data = new DataTableFactory("Consultant");
-            IWebDriver driver = GetNewDriver();
-            //Идём в роздел горячие документы
-            string urlPath = @"http://www.consultant.ru/law/hotdocs/";
-            driver.Url = urlPath;
-
-            //устанавливаем дату
-            driver.FindElement(By.XPath(@".//*[@class='btn-calendar']")).Click();
-            DateTime finishTime = DateTime.Now;            
-            DateTime startTime = finishTime.AddDays(-days);
-            driver.FindElement(By.XPath(@".//*[@id='start_date']")).SendKeys(startTime.ToString("d"));
-            driver.FindElement(By.XPath(@".//*[@id='end_date']")).SendKeys(finishTime.ToString("d"));
-            driver.FindElement(By.XPath(@".//*[@id='interim']/button")).Click();
-            //Считаем количество страниц 
-            int pages = driver.FindElements(By.XPath(@".//*[@class='pagination']/li")).Count; 
-
-            if (pages == 0)
-            {
-                pages = 1;
-            }
-            else
-            {
-                pages = pages / 2 - 1;
-            }
-            for (int i = 0; i < pages; i++)
-            {
-                //получаем список законов
-                var list = driver.FindElements(By.XPath(@".//*[@class='hditem']"));
-
-                //записываем всё найденное
-                for (int j = 0; j < list.Count; j++)
-                {
-                    var element = list[j].FindElement(By.XPath(@".//*[@class='link']/a"));
-                    string text = element.Text.Replace("\r", "");
-                    string link = element.GetAttribute("href");
-                    data.Rows.Add(new object[] { null, text, link });
-                }
-                if (i != (pages - 1) && pages > 1)
-                {
-                    var item = driver.FindElement(By.XPath($@".//*[@class='pagination']/li[{i + 3}]/a"));
-                    driver.Url = item.GetAttribute("href");
-                }
-            }
-            driver?.Quit();
-            data.Filter();
-            return data;
-        }
-
-        private static DataTableFactory ParseGovernment(int days)
-        {
-            DataTableFactory data = new DataTableFactory("Government");
-            IWebDriver driver = GetNewDriver();
-            //опеределяем даты для формирпования запроса
-            DateTime now = DateTime.Now;
-            DateTime start = now.AddDays(-days);
-            string site = "http://government.ru/docs/";
-            var topics = new List<string>() { "Оборонно-промышленный комплекс", "Государственный оборонный заказ", "Авиастроение", "Таможенно-тарифное регулирование",
-                "Государственная программа «Развитие авиационной промышленности на 2013–2025 годы»" };
-            //Идём в роздел горячие документы
-            string urlPath = $@"{site}?dt.since={start.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"))}&dt.till={now.Date.ToString("d", CultureInfo.CreateSpecificCulture("de-DE"))}";
-            driver.Url = urlPath;
-            
-            //1 - Раскрываем список            
-            var footer = driver.FindElement(By.XPath(@".//*[@class='footer']"));
-            Actions act = new Actions(driver);
-            //Прокручиваем вниз
-            act.MoveToElement(footer);
-            act.Perform();
-            //Если есть кнопка "Показать ещё" нажимаем и снова прокручиваем
-            while (driver.FindElements(By.XPath(@".//*[@class='show-more']")).Count != 0)
-            {                
-                driver.FindElements(By.XPath(@".//*[@class='show-more']"))[0].Click();
-                act.MoveToElement(footer);
-                act.Perform();
-            }
-
-            //2 - Считываем документ
-            //var headlines = driver.FindElements(By.XPath(@".//*[@class='headline\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ']"));    //*[@id="docs"]/div/div[1]/div/div[3]/div[1]/div[1]
-            //если страниц больше одной, то цикл по страницам
-            var pages = driver.FindElements(By.XPath(@".//*[@class='news-block-num']")).Count;
-            if (pages == 0)
-            {
-                pages = 1;
-            }
-            for (int p = 1; p <= pages; p++)
-            {
-                var headlines = driver.FindElements(By.XPath($@".//*[@id='docs']/div/div[1]/div/div[3]/div[{p}]/div"));
-                for (int j = 0; j < headlines.Count; j++)
-                {
-                    string atr = headlines[j].GetAttribute("class");
-                    if (atr != "date-splitter" && atr != "date-splitter up")
-                    {
-                        var headline = headlines[j];
-                        //var item = driver.FindElements(By.XPath($@".//*[@class='{atr}']"));
-                        var hearlineTitle = headline.FindElements(By.XPath(@".//*[@class='headline_date']/a"));
-                        string topic;
-                        if (hearlineTitle.Count > 0)
-                        {
-                            topic = hearlineTitle[0].Text;
-                        }
-                        else
-                        {
-                            topic = "";
-                        }
-                        if (CheckForTopicMatch(topic, topics))//
-                        {
-                            var text = headline.FindElement(By.XPath(@".//*[@class='headline_lead']"))?.Text;
-                            string link = headline.FindElement(By.XPath(@"./a")).GetAttribute("href");
-                            data.Rows.Add(new object[] { null, text, link });
-                        }
-                    }                 
-                }
-            }
-            driver?.Quit();
-            return data;
-        }
-
-        private static bool CheckForTopicMatch(string hearlineTitle, List<string> topics)
-        {
-            //if (hearlineTitle == "")
-            //{
-            //    return true;
-            //}
-            foreach (var item in topics)
-            {
-                if (hearlineTitle.Contains(item))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        #endregion
     }
 }
 

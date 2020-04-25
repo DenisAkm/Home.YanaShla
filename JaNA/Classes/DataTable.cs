@@ -12,7 +12,7 @@ namespace JaNA.Classes
     {
         public DataTableFactory(string name)
         {
-            this.TableName = name;
+            TableName = name;
             DataColumn idColumn = new DataColumn("Id", Type.GetType("System.Int32"));
             idColumn.Unique = true; // столбец будет иметь уникальное значение
             idColumn.AllowDBNull = false; // не может принимать null
@@ -26,15 +26,15 @@ namespace JaNA.Classes
             DataColumn include = new DataColumn("Include", Type.GetType("System.Boolean"));
             include.DefaultValue = false;
 
-            this.Columns.Add(idColumn);         //id
-            this.Columns.Add(contextColumn);    //текст (наименование) закона
-            this.Columns.Add(linkColumn);       //гиперссылка
+            Columns.Add(idColumn);         //id
+            Columns.Add(contextColumn);    //текст (наименование) закона
+            Columns.Add(linkColumn);       //гиперссылка
             //this.Columns.Add(typeColumn);       //проект, акт, закон
-            this.Columns.Add(datum);            //дата
-            this.Columns.Add(include);          //фильтр включения
+            Columns.Add(datum);            //дата
+            Columns.Add(include);          //фильтр включения
 
             // определяем первичный ключ таблицы books
-            this.PrimaryKey = new DataColumn[] { this.Columns["Id"] };
+            PrimaryKey = new DataColumn[] { Columns["Id"] };
         }
 
         public void Filter()
@@ -69,6 +69,7 @@ namespace JaNA.Classes
                 {                    
                     answer.Add(sr.ReadLine());
                 }
+                sr.Close();
                 return answer;
             }
             catch (Exception)
