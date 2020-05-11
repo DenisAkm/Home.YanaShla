@@ -11,6 +11,9 @@ using Xceed.Words.NET;
 
 namespace JaNA.Classes
 {
+    /// <summary>
+    /// Класс для работы с документом Word.
+    /// </summary>
     class Document
     {
         private DocX GetRejectionLetterTemplate()
