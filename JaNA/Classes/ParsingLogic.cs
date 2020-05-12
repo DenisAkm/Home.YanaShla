@@ -16,7 +16,7 @@ namespace JaNA.Classes
     public static class ParsingLogic
     {
         
-        static public DataTableFactory data;
+        static public LawEntity data;
         static private int Days { get; set; } = 1;
 
         static IWebDriver GetNewDriver()
@@ -32,7 +32,7 @@ namespace JaNA.Classes
             {
                 Days = days;
 
-                List<DataTableFactory> dataList = new List<DataTableFactory>();
+                List<LawEntity> dataList = new List<LawEntity>();
                 List<Task> taskList = new List<Task>();
 
                 // Сайт не работает.
@@ -61,9 +61,9 @@ namespace JaNA.Classes
             WriteToList();
         }        
 
-        private static DataTableFactory MergeTables(List<DataTableFactory> datalist)
+        private static LawEntity MergeTables(List<LawEntity> datalist)
         {
-            DataTableFactory mertgedtable = new DataTableFactory("Main");
+            LawEntity mertgedtable = new LawEntity("Main");
             foreach (var table in datalist)
             {
                 foreach (DataRow r in table.Rows)
@@ -82,7 +82,7 @@ namespace JaNA.Classes
                 Form1.Application.checkedListBox1.Items.Add(context, include);
             }
         }
-        private static void Searching(IWebDriver driver, ref DataTableFactory data, int days, string patch)
+        private static void Searching(IWebDriver driver, ref LawEntity data, int days, string patch)
         {
             for (int i = 0; i < days / 2 + 1; i++)
             {
@@ -120,9 +120,9 @@ namespace JaNA.Classes
             return false;
         }
 
-        public static DataTableFactory ParseConsultant(int days)
+        public static LawEntity ParseConsultant(int days)
         {
-            DataTableFactory data = new DataTableFactory("Consultant");
+            LawEntity data = new LawEntity("Consultant");
             IWebDriver driver = GetNewDriver();
             //Идём в роздел горячие документы
             string urlPath = @"http://www.consultant.ru/law/hotdocs/";
@@ -166,15 +166,15 @@ namespace JaNA.Classes
                 }
             }
             driver?.Quit();
-            data.Filter();
+            data.FindRecodrsByFilter();
             return data;
         }
 
 
         #region Черновик
-        public static DataTableFactory ParseAsozd(int days)
+        public static LawEntity ParseAsozd(int days)
         {
-            DataTableFactory data = new DataTableFactory("Asozd");
+            LawEntity data = new LawEntity("Asozd");
             IWebDriver driver = GetNewDriver();
             //Идём на главную
             string urlPath = @"http://asozd.duma.gov.ru";
@@ -190,12 +190,12 @@ namespace JaNA.Classes
             //Перебираем по двум дням и 24 часам в Перечене Проектов постановлений
             Searching(driver, ref data, days, "Проект постановления №");
             driver?.Quit();
-            data.Filter();
+            data.FindRecodrsByFilter();
             return data;
         }
-        private static DataTableFactory ParseGovernment(int days)
+        private static LawEntity ParseGovernment(int days)
         {
-            DataTableFactory data = new DataTableFactory("Government");
+            LawEntity data = new LawEntity("Government");
             IWebDriver driver = GetNewDriver();
             //опеределяем даты для формирпования запроса
             DateTime now = DateTime.Now;
@@ -261,9 +261,9 @@ namespace JaNA.Classes
             driver?.Quit();
             return data;
         }
-        public static async Task<DataTableFactory> ParseAsozdAsync(int days)
+        public static async Task<LawEntity> ParseAsozdAsync(int days)
         {
-            DataTableFactory data = new DataTableFactory("Asozd");
+            LawEntity data = new LawEntity("Asozd");
             await Task.Run(() =>
             {
                 IWebDriver driver = GetNewDriver();
@@ -285,9 +285,9 @@ namespace JaNA.Classes
             return data;
         }
 
-        public static async Task<DataTableFactory> ParseConsultantAsync(int days)
+        public static async Task<LawEntity> ParseConsultantAsync(int days)
         {
-            DataTableFactory data = new DataTableFactory("Consultant");
+            LawEntity data = new LawEntity("Consultant");
             await Task.Run(() => {
                 IWebDriver driver = GetNewDriver();
                 //Идём в роздел горячие документы

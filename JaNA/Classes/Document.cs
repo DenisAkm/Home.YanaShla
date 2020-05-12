@@ -16,6 +16,74 @@ namespace JaNA.Classes
     /// </summary>
     class Document
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        public void CreateReportDocument(LawEntity data)
+        {
+            string name = "DocXExample.docx";
+            string fileName = Path.Combine(Environment.CurrentDirectory, name);
+
+            // Create the document in memory:
+            var doc = DocX.Create(fileName);
+            doc.SetDefaultFont(new Xceed.Document.NET.Font("Times New Roman"), 14);
+            
+            var listType = ListItemType.Numbered;
+            var list = doc.AddList(listType: ListItemType.Numbered, startNumber: 1);
+            
+            // Основной заголовок;
+            Paragraph headparagraph = doc.InsertParagraph("Основные изменения нормативно-правовых актов");
+            headparagraph.Bold().SetLineSpacing(LineSpacingType.Line, 2.5f);
+            headparagraph.Alignment = Alignment.center;
+            
+            foreach (DataRow row in data.Rows)
+            {
+                if (row.Field<bool>("Include"))
+                {
+                    object[] cells = row.ItemArray;
+                    string context = ModifyToText(cells[1]);                    
+
+                    // создаём ссылку
+                    Hyperlink hyperlinkBlog = doc.AddHyperlink($"{context}", new Uri((string)cells[2]));
+                    
+                    doc.AddListItem(list, "", 0, listType);
+                    list.Items[list.Items.Count - 1].AppendHyperlink(hyperlinkBlog);
+                    list.Items[list.Items.Count - 1].Alignment = Alignment.both;
+                    list.Items[list.Items.Count - 1].SetLineSpacing(LineSpacingType.After, 1.5f);
+                }
+            }
+            doc.InsertList(list);
+            // Save to the output directory:
+            doc.Save();
+
+            // Open in Word:
+            try
+            {
+                Process.Start("WINWORD.EXE", name);
+            }
+            catch (Exception)
+            {
+                                
+            }            
+        }
+        string ModifyToText(object val)
+        {
+            string context = (string)val;
+            if (context !="")
+            {
+                string lastChar = context.Substring(context.Length - 1);
+                while (lastChar == " " || lastChar == "\r")
+                {
+                    context = context.Remove(context.Length - 1);
+                    lastChar = context.Substring(context.Length - 1);
+                }
+                context.Replace("\"\"", "\"");
+            }
+            return context;
+        }
+
+        #region Примеры работы с библиотекой Xceed.
         private DocX GetRejectionLetterTemplate()
         {
             // Adjust the path so suit your machine:
@@ -65,7 +133,6 @@ namespace JaNA.Classes
 
             return doc;
         }
-
         internal void CreateNumberdList()
         {
             string name = "DocXExampleList.docx";
@@ -103,7 +170,6 @@ namespace JaNA.Classes
             // Open in Word:
             Process.Start("WINWORD.EXE", name);
         }
-
         public void CreateSampleDocument()
         {
             string name = "DocXExample.docx";
@@ -165,71 +231,7 @@ namespace JaNA.Classes
             p.Start();
 
         }
-                
-
-        public void CreateReportDocument(DataTableFactory data)
-        {
-            string name = "DocXExample.docx";
-            string fileName = Path.Combine(Environment.CurrentDirectory, name);
-
-            // Create the document in memory:
-            var doc = DocX.Create(fileName);
-            doc.SetDefaultFont(new Xceed.Document.NET.Font("Times New Roman"), 14);
-            
-            var listType = ListItemType.Numbered;
-            var list = doc.AddList(listType: ListItemType.Numbered, startNumber: 1);
-            
-            // Основной заголовок;
-            Paragraph headparagraph = doc.InsertParagraph("Основные изменения нормативно-правовых актов");
-            headparagraph.Bold().SetLineSpacing(LineSpacingType.Line, 2.5f);
-            headparagraph.Alignment = Alignment.center;
-            
-            foreach (DataRow row in data.Rows)
-            {
-                if (row.Field<bool>("Include"))
-                {
-                    object[] cells = row.ItemArray;
-                    string context = ModifyToText(cells[1]);                    
-
-                    // создаём ссылку
-                    Hyperlink hyperlinkBlog = doc.AddHyperlink($"{context}", new Uri((string)cells[2]));
-                    
-                    doc.AddListItem(list, "", 0, listType);
-                    list.Items[list.Items.Count - 1].AppendHyperlink(hyperlinkBlog);
-                    list.Items[list.Items.Count - 1].Alignment = Alignment.both;
-                    list.Items[list.Items.Count - 1].SetLineSpacing(LineSpacingType.After, 1.5f);
-                }
-            }
-            doc.InsertList(list);
-            // Save to the output directory:
-            doc.Save();
-
-            // Open in Word:
-            try
-            {
-                Process.Start("WINWORD.EXE", name);
-            }
-            catch (Exception)
-            {
-                                
-            }
-            
-        }
-        string ModifyToText(object val)
-        {
-            string context = (string)val;
-            if (context !="")
-            {
-                string lastChar = context.Substring(context.Length - 1);
-                while (lastChar == " " || lastChar == "\r")
-                {
-                    context = context.Remove(context.Length - 1);
-                    lastChar = context.Substring(context.Length - 1);
-                }
-                context.Replace("\"\"", "\"");
-            }
-            return context;
-        }
+        #endregion
     }
-    
+
 }

@@ -60,7 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataTable.cs">
+    <Compile Include="Classes\LawEntity.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Document.cs" />
